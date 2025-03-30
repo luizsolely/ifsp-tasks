@@ -1,0 +1,32 @@
+1) Consultas SQL
+
+1. select Nome, CPF, RG from Alunos;
+2. select * from Alunos where matricula = 5;
+3. select curso from Alunos where Nome = 'Pedro Silva';
+4. select idade from Alunos where cpf = 45455455454;
+5. select * from Alunos where curso = 'Direito';
+6. select Nome, cpf from Alunos where curso = 'Computação';
+7. select nome, cpf, rg from Alunos where idade = 20;
+8. select curso from Alunos where uf_rg = 'SP';
+9. select * from Alunos WHERE curso = 'Computação' and idade = 20;
+10. select nome, curso, cpf, rg FROM Alunos where curso = 'Direito' AND uf_rg = 'SP';
+11. select nome, curso, cpf, rg FROM Alunos where curso = 'Biologia' AND uf_rg = 'RJ';
+12. SELECT * FROM Alunos WHERE curso = 'Direito' OR curso = 'Biologia';
+13. SELECT * FROM Alunos WHERE idade = 20 AND curso = 'Direito' OR idade = 20 AND curso = 'Biologia';
+
+2) Classificação de Comandos SQL
+
+a) Create Database dbAcademico
+   DDL
+
+b) Insert into Alunos values (10;657843901-98;'2345678';'SP;'22;'Computação')
+   DML
+
+c) Alter Table Alunos Drop Column UF_RG
+   DDL
+
+d) Select * from Alunos
+   DML
+
+e) Drop Table Alunos
+   DDL
