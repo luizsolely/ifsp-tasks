@@ -1,0 +1,7 @@
+C:\Users\solely\source\repos\AgendaMVC\AgendaMVC\bin\Debug\AgendaMVC.exe.config
+C:\Users\solely\source\repos\AgendaMVC\AgendaMVC\bin\Debug\AgendaMVC.exe
+C:\Users\solely\source\repos\AgendaMVC\AgendaMVC\bin\Debug\AgendaMVC.pdb
+C:\Users\solely\source\repos\AgendaMVC\AgendaMVC\obj\Debug\AgendaMVC.csproj.AssemblyReference.cache
+C:\Users\solely\source\repos\AgendaMVC\AgendaMVC\obj\Debug\AgendaMVC.csproj.CoreCompileInputs.cache
+C:\Users\solely\source\repos\AgendaMVC\AgendaMVC\obj\Debug\AgendaMVC.exe
+C:\Users\solely\source\repos\AgendaMVC\AgendaMVC\obj\Debug\AgendaMVC.pdb
