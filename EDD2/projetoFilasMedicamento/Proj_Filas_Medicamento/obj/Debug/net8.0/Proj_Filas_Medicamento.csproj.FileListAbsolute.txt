@@ -1,0 +1,14 @@
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\bin\Debug\net8.0\Proj_Filas_Medicamento.exe
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\bin\Debug\net8.0\Proj_Filas_Medicamento.deps.json
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\bin\Debug\net8.0\Proj_Filas_Medicamento.runtimeconfig.json
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\bin\Debug\net8.0\Proj_Filas_Medicamento.dll
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\bin\Debug\net8.0\Proj_Filas_Medicamento.pdb
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\Proj_Filas_Medicamento.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\Proj_Filas_Medicamento.AssemblyInfoInputs.cache
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\Proj_Filas_Medicamento.AssemblyInfo.cs
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\Proj_Filas_Medicamento.csproj.CoreCompileInputs.cache
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\Proj_Filas_Medicamento.dll
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\refint\Proj_Filas_Medicamento.dll
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\Proj_Filas_Medicamento.pdb
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\Proj_Filas_Medicamento.genruntimeconfig.cache
+C:\Users\jaque\OneDrive\Área de Trabalho\Proj_Filas_Medicamento\Proj_Filas_Medicamento\obj\Debug\net8.0\ref\Proj_Filas_Medicamento.dll
