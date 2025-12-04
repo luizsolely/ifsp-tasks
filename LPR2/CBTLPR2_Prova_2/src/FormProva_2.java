@@ -156,7 +156,12 @@ public class FormProva_2 implements ActionListener
 
         if (e.getSource() == btnCredito)
         {
-            txtResultado.setText("Sistema desenvolvido por Luiz Gustavo e Luiz Felipe.");
+            JOptionPane.showMessageDialog(
+              null,
+              "Sistema desenvolvido por:\nLuiz Gustavo Verissimo Monteiro\nLuiz Felipe Gonçalves da Silva",
+              "Créditos",
+              JOptionPane.INFORMATION_MESSAGE
+            );
         }
 
         if (e.getSource() == btnSair)
@@ -164,5 +169,6 @@ public class FormProva_2 implements ActionListener
             System.exit(0);
         }
     }
+
 
 }
