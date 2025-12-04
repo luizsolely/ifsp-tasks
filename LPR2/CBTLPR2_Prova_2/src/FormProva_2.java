@@ -20,7 +20,7 @@ public class FormProva_2 implements ActionListener
     private JTextField txtPeso;
     private JTextField txtAltura;;
     private JTextField txtPesquisa;;
-    private JTextField txtResultado;;
+    private JTextArea txtResultado;;
     private JButton btnIncluir, btnLimpar, btnApDados, btnPesquisar, btnCredito, btnSair;
 
     public static void main(String[] args)
@@ -30,7 +30,7 @@ public class FormProva_2 implements ActionListener
 
     public void criarForm()
     {
-        JFrame form = new JFrame("TP04 - LPR2");
+        JFrame form = new JFrame("PROVA 02 - LPR2");
         form.setSize(500,550);
         form.setLocationRelativeTo(null);
         form.setLayout(new BorderLayout());
@@ -78,7 +78,7 @@ public class FormProva_2 implements ActionListener
         
         JPanel painelInferior = new JPanel();
         painelInferior.setLayout(new BoxLayout(painelInferior, BoxLayout.Y_AXIS));
-        txtResultado = new JTextField();
+        txtResultado = new JTextArea();
         painelInferior.add(txtResultado);
         painelInferior.setPreferredSize(new Dimension(500, 300));  
 
@@ -92,42 +92,77 @@ public class FormProva_2 implements ActionListener
 
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource()==btnApDados)
+        if (e.getSource() == btnIncluir)
         {
             try {
-                String nomePesquisado = txtPesquisa.getText();
-                listaPessoa = ConexaoSQLServer.pesquisarFuncionarios(nomePesquisado);
+                String nome = txtNome.getText();
+                int idade = Integer.parseInt(txtIdade.getText());
+                float peso = Float.parseFloat(txtPeso.getText());
+                float altura = Float.parseFloat(txtAltura.getText());
 
-                if(listaPessoa.isEmpty()) {
-                		JOptionPane.showMessageDialog(null, "Nenhum registro encontrado!");
-                    return;
-                }
-                indiceAtual = 0;
-                exibirFuncionario(indiceAtual);
-            }catch (Exception ex) {
+                Paciente p = new Paciente(0, idade, nome, peso, altura);
+                ConexaoPostgres.inserirPaciente(p);
+
+                txtResultado.setText("Paciente inserido com sucesso!");
+
+            } catch (Exception ex) {
+                txtResultado.setText("Erro: " + ex.getMessage());
             }
         }
-        if (e.getSource() == btnCredito) {
-            if (indiceAtual < listaPessoa.size() - 1) {
-                indiceAtual++;
-                exibirFuncionario(indiceAtual);
-            } else {
-                JOptionPane.showMessageDialog(null, "Último registro!");
+
+        if (e.getSource()==btnApDados)
+        {
+            List<Paciente> lista = ConexaoPostgres.listarPacientes();
+            StringBuilder sb = new StringBuilder();
+
+            for (Paciente p : lista) {
+                sb.append("ID: ").append(p.getCod_func())
+                        .append(" | Nome: ").append(p.getNome_paciente())
+                        .append(" | Idade: ").append(p.getIdade_paciente())
+                        .append(" | Peso: ").append(p.getPeso_paciente())
+                        .append(" | Altura: ").append(p.getAltura_paciente())
+                        .append("\n");
             }
+            txtResultado.setText(sb.toString());
         }
-        if (e.getSource() == btnLimpar) {
-            if (indiceAtual > 0) {
-                indiceAtual--;
-                exibirFuncionario(indiceAtual);
-            } else {
-                JOptionPane.showMessageDialog(null, "Primeiro registro!");
+
+        if (e.getSource() == btnPesquisar)
+        {
+            String nome = txtPesquisa.getText();
+            List<Paciente> lista = ConexaoPostgres.pesquisarPacientes(nome);
+
+            StringBuilder sb = new StringBuilder();
+            for (Paciente p : lista) {
+                sb.append("ID: ").append(p.getCod_func())
+                        .append(" | Nome: ").append(p.getNome_paciente())
+                        .append(" | Idade: ").append(p.getIdade_paciente())
+                        .append(" | Peso: ").append(p.getPeso_paciente())
+                        .append(" | Altura: ").append(p.getAltura_paciente())
+                        .append("\n");
             }
+
+            txtResultado.setText(sb.toString());
+        }
+
+        if (e.getSource() == btnLimpar)
+        {
+            txtNome.setText("");
+            txtIdade.setText("");
+            txtPeso.setText("");
+            txtAltura.setText("");
+            txtPesquisa.setText("");
+            txtResultado.setText("");
+        }
+
+        if (e.getSource() == btnCredito)
+        {
+            txtResultado.setText("Sistema desenvolvido por Luiz Gustavo e Luiz Felipe.");
+        }
+
+        if (e.getSource() == btnSair)
+        {
+            System.exit(0);
         }
     }
-    private void exibirFuncionario(int idx) {
-        Paciente f = listaPessoa.get(idx);
-        txtNome.setText(f.getNome_paciente());
-        txtIdade.setText(Integer.toString(f.getIdade_paciente()));
-        txtPeso.setText(Double.toString(f.getPeso_paciente()));
-    }
+
 }
