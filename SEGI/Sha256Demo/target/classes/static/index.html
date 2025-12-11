@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SHA-256 Demo</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+    <h1 id="title">SHA-256 Hash</h1>
+    <textarea id="inputText" placeholder="Digite o texto aqui..."></textarea>
+    <button id="hashBtn">Gerar SHA-256</button>
+
+    <div id="result" class="card hidden">
+        <h2>Resultado</h2>
+        <p><strong>Hex:</strong></p>
+        <pre id="hex"></pre>
+    </div>
+</div>
+
+<script>
+    const btn = document.getElementById('hashBtn');
+    btn.addEventListener('click', async () => {
+      const text = document.getElementById('inputText').value;
+      if (!text) return alert('Insira um texto.');
+      try {
+        const resp = await fetch('/api/hash/sha256', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        });
+        if (!resp.ok) throw new Error('Erro na requisição');
+        const data = await resp.json();
+        document.getElementById('hex').innerText = data.hex;
+        document.getElementById('result').classList.remove('hidden');
+      } catch (err) {
+        alert('Erro: ' + err.message);
+      }
+    });
+</script>
+</body>
+</html>
