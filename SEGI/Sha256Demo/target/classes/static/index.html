@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>SHA256 + RSA Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            max-width: 900px;
+        }
+        h2 { margin-top: 40px; }
+        textarea, input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            margin-bottom: 12px;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .box {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        pre {
+            background: #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>SHA256 + RSA Demo</h1>
+
+<!-- ========================================================= -->
+<!-- 1) ENCRYPT SECTION -->
+<!-- ========================================================= -->
+<div class="box">
+    <h2>Gerar SHA256 e Criptografar (RSA)</h2>
+
+    <label>Texto:</label>
+    <textarea id="inputText" rows="2"></textarea>
+
+    <button onclick="encrypt()">Gerar</button>
+
+    <h3>SHA256:</h3>
+    <pre id="sha256Output"></pre>
+
+    <h3>RSA Criptografado (Base64):</h3>
+    <pre id="rsaEncOutput"></pre>
+
+    <h3>Chave Pública (Base64):</h3>
+    <pre id="publicKeyOutput"></pre>
+
+    <h3>Chave Privada (Base64):</h3>
+    <pre id="privateKeyOutput"></pre>
+</div>
+
+
+<!-- ========================================================= -->
+<!-- 2) MANUAL RSA DECRYPT SECTION -->
+<!-- ========================================================= -->
+<div class="box">
+    <h2>Descriptografar RSA Manualmente</h2>
+
+    <label>RSA Criptografado (Base64):</label>
+    <textarea id="manualEncrypted" rows="2"></textarea>
+
+    <label>Chave Privada (Base64):</label>
+    <textarea id="manualPrivateKey" rows="4"></textarea>
+
+    <button onclick="manualDecrypt()">Descriptografar</button>
+
+    <h3>SHA256 Recuperado:</h3>
+    <pre id="manualShaOutput"></pre>
+</div>
+
+
+<script>
+    function encrypt() {
+        const text = document.getElementById("inputText").value.trim();
+
+        fetch("/crypto/encrypt", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: text })
+        })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("sha256Output").textContent = data.sha256;
+                document.getElementById("rsaEncOutput").textContent = data.encryptedRSA;
+                document.getElementById("publicKeyOutput").textContent = data.publicKey;
+                document.getElementById("privateKeyOutput").textContent = data.privateKey;
+            });
+    }
+
+    function manualDecrypt() {
+        const encrypted = document.getElementById("manualEncrypted").value.trim();
+        const privateKey = document.getElementById("manualPrivateKey").value.trim();
+
+        fetch("/crypto/decrypt/manual", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                encryptedDataBase64: encrypted,
+                privateKeyBase64: privateKey
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("manualShaOutput").textContent = data.recoveredSha256;
+            });
+    }
+</script>
+
+</body>
+</html>
