@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: "jdbc:h2:file:/opt/tomcat/data/cbtswe1_prova2;MODE=LEGACY;DATABASE_TO_UPPER=false"
+      DB_USER: "sa"
+      DB_PASSWORD: ""
+    volumes:
+      - cbtswe1-data:/opt/tomcat/data
+
+volumes:
+  cbtswe1-data:
