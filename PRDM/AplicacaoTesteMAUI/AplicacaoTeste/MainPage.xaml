@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicacaoTeste.MainPage"
+             Title="Aplicação Teste"
+             BackgroundColor="{StaticResource Fundo}"
+             SafeAreaEdges="All">
+
+    <ContentPage.Resources>
+        <Style x:Key="RotuloCampo" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource Texto}" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="CampoTexto" TargetType="Entry">
+            <Setter Property="TextColor" Value="{StaticResource Texto}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Fundo}" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="MinimumHeightRequest" Value="44" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="IsTextPredictionEnabled" Value="False" />
+            <Setter Property="IsSpellCheckEnabled" Value="False" />
+            <Setter Property="Keyboard" Value="Plain" />
+            <Setter Property="ClearButtonVisibility" Value="Never" />
+        </Style>
+
+        <Style x:Key="ContornoCampo" TargetType="Border">
+            <Setter Property="Stroke" Value="{StaticResource Texto}" />
+            <Setter Property="StrokeThickness" Value="4" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="BackgroundColor" Value="{StaticResource Fundo}" />
+        </Style>
+
+        <Style x:Key="BotaoAcao" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource FundoBotao}" />
+            <Setter Property="TextColor" Value="{StaticResource TextoBotao}" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="MinimumHeightRequest" Value="52" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+            <Setter Property="TextTransform" Value="None" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout Padding="24,24,24,32"
+                             Spacing="0"
+                             MaximumWidthRequest="400"
+                             HorizontalOptions="Fill"
+                             VerticalOptions="Start">
+            <Label Text="Aplicação Teste"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource Texto}"
+                   HorizontalTextAlignment="Center"
+                   SemanticProperties.HeadingLevel="Level1" />
+
+            <Grid Margin="0,44,0,0"
+                  ColumnDefinitions="Auto,*"
+                  RowDefinitions="Auto,Auto"
+                  ColumnSpacing="12"
+                  RowSpacing="12">
+                <Label Grid.Row="0" Grid.Column="0"
+                       Text="ID:"
+                       Style="{StaticResource RotuloCampo}" />
+                <Border Grid.Row="0" Grid.Column="1"
+                        Style="{StaticResource ContornoCampo}">
+                    <Entry x:Name="IdEntry"
+                           AutomationId="IdEntry"
+                           Style="{StaticResource CampoTexto}"
+                           SemanticProperties.Description="ID do usuário" />
+                </Border>
+
+                <Label Grid.Row="1" Grid.Column="0"
+                       Text="Pass"
+                       Style="{StaticResource RotuloCampo}" />
+                <Border Grid.Row="1" Grid.Column="1"
+                        Style="{StaticResource ContornoCampo}">
+                    <Entry x:Name="SenhaEntry"
+                           AutomationId="SenhaEntry"
+                           Style="{StaticResource CampoTexto}"
+                           IsPassword="True"
+                           SemanticProperties.Description="Senha" />
+                </Border>
+            </Grid>
+
+            <VerticalStackLayout Margin="6,96,6,0" Spacing="16">
+                <Button Text="OK"
+                        AutomationId="OkButton"
+                        Style="{StaticResource BotaoAcao}"
+                        Clicked="OnOkClicked" />
+                <Button Text="Limpar"
+                        AutomationId="LimparButton"
+                        Style="{StaticResource BotaoAcao}"
+                        Clicked="OnLimparClicked" />
+                <Button Text="Créditos"
+                        AutomationId="CreditosButton"
+                        Style="{StaticResource BotaoAcao}"
+                        Clicked="OnCreditosClicked" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
